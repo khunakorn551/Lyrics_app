@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
     npm \
     libpq-dev \
     postgresql-client \
+    nodejs \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install -j$(nproc) \
@@ -44,6 +45,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Copy app files
 COPY . /var/www/html
+
+# Install Node dependencies and build assets
+RUN npm install && npm run build
 
 # Set correct permissions
 RUN chown -R www-data:www-data /var/www/html \
