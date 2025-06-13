@@ -65,11 +65,18 @@ RUN composer install --no-dev --optimize-autoloader
 # Create .env file from example if it doesn't exist
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
+# Set default database connection to PostgreSQL
+RUN sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=pgsql/' .env
+
 # Generate application key if not exists
 RUN php artisan key:generate --no-interaction
 
 # Clear and cache configuration
-RUN php artisan config:cache \
+RUN php artisan config:clear \
+    && php artisan cache:clear \
+    && php artisan view:clear \
+    && php artisan route:clear \
+    && php artisan config:cache \
     && php artisan route:cache \
     && php artisan view:cache
 
