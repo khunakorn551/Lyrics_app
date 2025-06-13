@@ -76,24 +76,34 @@ RUN sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=pgsql/' .env
 RUN echo "APP_ENV=production" >> .env \
     && echo "APP_DEBUG=true" >> .env \
     && echo "LOG_LEVEL=debug" >> .env \
-    && echo "SESSION_DRIVER=database" >> .env
+    && echo "SESSION_DRIVER=database" >> .env \
+    && echo "LOG_CHANNEL=daily" >> .env
 
 # Generate application key if not exists
 RUN php artisan key:generate --no-interaction
 
 # Create startup script
 RUN echo '#!/bin/bash\n\
+echo "Starting application..."\n\
+echo "Testing database connection..."\n\
+php artisan db:monitor\n\
+echo "Clearing caches..."\n\
 php artisan config:clear\n\
 php artisan cache:clear\n\
 php artisan view:clear\n\
 php artisan route:clear\n\
+echo "Creating session table..."\n\
 php artisan session:table\n\
+echo "Running migrations..."\n\
 php artisan migrate --force\n\
+echo "Caching configurations..."\n\
 php artisan config:cache\n\
 php artisan route:cache\n\
 php artisan view:cache\n\
+echo "Setting permissions..."\n\
 chmod -R 775 storage\n\
 chmod -R 775 bootstrap/cache\n\
+echo "Starting Apache..."\n\
 apache2-foreground' > /usr/local/bin/start.sh \
     && chmod +x /usr/local/bin/start.sh
 
