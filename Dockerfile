@@ -71,26 +71,25 @@ RUN sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=pgsql/' .env
 # Generate application key if not exists
 RUN php artisan key:generate --no-interaction
 
-# Clear and cache configuration
-RUN php artisan config:clear \
-    && php artisan cache:clear \
-    && php artisan view:clear \
-    && php artisan route:clear \
-    && php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache
-
-# Create a health check script
+# Create startup script
 RUN echo '#!/bin/bash\n\
-curl -f http://localhost/ || exit 1' > /usr/local/bin/healthcheck.sh \
-    && chmod +x /usr/local/bin/healthcheck.sh
+php artisan config:clear\n\
+php artisan cache:clear\n\
+php artisan view:clear\n\
+php artisan route:clear\n\
+php artisan config:cache\n\
+php artisan route:cache\n\
+php artisan view:cache\n\
+php artisan migrate --force\n\
+apache2-foreground' > /usr/local/bin/start.sh \
+    && chmod +x /usr/local/bin/start.sh
 
 # Expose port 80
 EXPOSE 80
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD /usr/local/bin/healthcheck.sh
+    CMD curl -f http://localhost/ || exit 1
 
-# Start Apache
-CMD ["apache2-foreground"]
+# Start Apache with startup script
+CMD ["/usr/local/bin/start.sh"]
