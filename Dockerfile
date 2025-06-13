@@ -57,7 +57,11 @@ COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 # Configure PHP
 RUN echo "memory_limit=256M" > /usr/local/etc/php/conf.d/memory-limit.ini \
     && echo "upload_max_filesize=10M" >> /usr/local/etc/php/conf.d/upload-limit.ini \
-    && echo "post_max_size=10M" >> /usr/local/etc/php/conf.d/upload-limit.ini
+    && echo "post_max_size=10M" >> /usr/local/etc/php/conf.d/upload-limit.ini \
+    && echo "display_errors=On" >> /usr/local/etc/php/conf.d/error-reporting.ini \
+    && echo "error_reporting=E_ALL" >> /usr/local/etc/php/conf.d/error-reporting.ini \
+    && echo "log_errors=On" >> /usr/local/etc/php/conf.d/error-reporting.ini \
+    && echo "error_log=/var/log/php_errors.log" >> /usr/local/etc/php/conf.d/error-reporting.ini
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
@@ -67,6 +71,12 @@ RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
 # Set default database connection to PostgreSQL
 RUN sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=pgsql/' .env
+
+# Set environment variables
+RUN echo "APP_ENV=production" >> .env \
+    && echo "APP_DEBUG=true" >> .env \
+    && echo "LOG_LEVEL=debug" >> .env \
+    && echo "SESSION_DRIVER=database" >> .env
 
 # Generate application key if not exists
 RUN php artisan key:generate --no-interaction
@@ -82,6 +92,8 @@ php artisan migrate --force\n\
 php artisan config:cache\n\
 php artisan route:cache\n\
 php artisan view:cache\n\
+chmod -R 775 storage\n\
+chmod -R 775 bootstrap/cache\n\
 apache2-foreground' > /usr/local/bin/start.sh \
     && chmod +x /usr/local/bin/start.sh
 
