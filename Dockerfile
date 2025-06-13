@@ -51,21 +51,13 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage \
     && chmod -R 775 /var/www/html/bootstrap/cache
 
-# Configure Apache
-RUN echo '<Directory /var/www/html/public>\n\
-    Options Indexes FollowSymLinks\n\
-    AllowOverride All\n\
-    Require all granted\n\
-</Directory>' > /etc/apache2/conf-available/docker-php.conf \
-    && a2enconf docker-php
+# Copy custom Apache configuration
+COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # Configure PHP
 RUN echo "memory_limit=256M" > /usr/local/etc/php/conf.d/memory-limit.ini \
     && echo "upload_max_filesize=10M" >> /usr/local/etc/php/conf.d/upload-limit.ini \
     && echo "post_max_size=10M" >> /usr/local/etc/php/conf.d/upload-limit.ini
-
-# Change Apache DocumentRoot to /var/www/html/public
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
