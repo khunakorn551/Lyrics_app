@@ -101,6 +101,8 @@ php artisan cache:clear\n\
 php artisan view:clear\n\
 php artisan route:clear\n\
 php artisan optimize:clear\n\
+echo "Creating storage link..."\n\
+php artisan storage:link\n\
 echo "Creating session table..."\n\
 php artisan session:table\n\
 echo "Running migrations..."\n\
