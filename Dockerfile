@@ -56,6 +56,9 @@ RUN npm install && \
 RUN ls -l public/build
 RUN cat public/build/manifest.json
 
+# Debug: List contents of the public directory (root of served files)
+RUN ls -l public/
+
 # Set correct permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
