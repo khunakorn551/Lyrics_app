@@ -97,6 +97,8 @@ RUN php artisan key:generate --no-interaction
 
 # Create startup script
 RUN echo '#!/bin/bash\n\
+echo "APP_URL: ${APP_URL}"\n\
+echo "ASSET_URL: ${ASSET_URL}"\n\
 echo "Starting application..."\n\
 echo "Testing database connection..."\n\
 php artisan db:monitor\n\
