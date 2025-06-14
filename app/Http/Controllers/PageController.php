@@ -10,7 +10,11 @@ class PageController extends Controller
     public function home()
     {
         if (auth()->check()) {
-            return redirect()->route(auth()->user()->isAdmin() ? 'admin.dashboard' : 'dashboard');
+            $user = auth()->user();
+            if ($user && $user->isAdmin()) {
+                return redirect()->route('admin.dashboard');
+            }
+            return redirect()->route('dashboard');
         }
         return view('welcome', [
             'lyrics' => Lyrics::latest()->paginate(9)
