@@ -37,8 +37,8 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 @foreach($lyrics as $lyric)
                                     <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                                        @if($lyric->image)
-                                            <img src="{{ asset('storage/' . $lyric->image) }}" alt="{{ $lyric->title }}" class="w-full h-48 object-cover">
+                                        @if($lyric->image_path)
+                                            <img src="{{ Storage::url($lyric->image_path) }}" alt="{{ $lyric->title }}" class="w-full h-48 object-cover">
                                         @else
                                             <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
                                                 <span class="text-gray-400">No image</span>

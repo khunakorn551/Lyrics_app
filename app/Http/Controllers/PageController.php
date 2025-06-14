@@ -9,9 +9,9 @@ class PageController extends Controller
 {
     public function home()
     {
-        if (auth()->check()) {
-            $user = auth()->user();
-            if ($user && $user->isAdmin()) {
+        $user = auth()->user();
+        if ($user) {
+            if ($user->isAdmin()) {
                 return redirect()->route('admin.dashboard');
             }
             return redirect()->route('dashboard');
