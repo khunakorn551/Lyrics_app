@@ -65,7 +65,7 @@ COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 RUN echo "memory_limit=256M" > /usr/local/etc/php/conf.d/memory-limit.ini \
     && echo "upload_max_filesize=10M" >> /usr/local/etc/php/conf.d/upload-limit.ini \
     && echo "post_max_size=10M" >> /usr/local/etc/php/conf.d/upload-limit.ini \
-    && echo "display_errors=On" >> /usr/local/etc/php/conf.d/error-reporting.ini \
+    && echo "display_errors=Off" >> /usr/local/etc/php/conf.d/error-reporting.ini \
     && echo "error_reporting=E_ALL" >> /usr/local/etc/php/conf.d/error-reporting.ini \
     && echo "log_errors=On" >> /usr/local/etc/php/conf.d/error-reporting.ini \
     && echo "error_log=/var/log/php_errors.log" >> /usr/local/etc/php/conf.d/error-reporting.ini
@@ -79,26 +79,18 @@ RUN if [ ! -f .env ]; then cp .env.example .env; fi
 # Set default database connection to PostgreSQL
 RUN sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=pgsql/' .env
 
-# Set environment variables
+# Set environment variables (APP_URL and ASSET_URL will be set on Render dashboard)
 RUN echo "APP_ENV=production" > .env \
     && echo "APP_DEBUG=false" >> .env \
     && echo "LOG_LEVEL=info" >> .env \
     && echo "SESSION_DRIVER=database" >> .env \
-    && echo "LOG_CHANNEL=daily" >> .env \
-    && echo "ASSET_URL=${APP_URL}" >> .env
-
-# Debug: Print environment variables
-RUN cat .env | grep APP_ENV
-RUN cat .env | grep APP_URL
-RUN cat .env | grep ASSET_URL
+    && echo "LOG_CHANNEL=daily" >> .env
 
 # Generate application key if not exists
 RUN php artisan key:generate --no-interaction
 
 # Create startup script
 RUN echo '#!/bin/bash\n\
-echo "APP_URL: ${APP_URL}"\n\
-echo "ASSET_URL: ${ASSET_URL}"\n\
 echo "Starting application..."\n\
 echo "Testing database connection..."\n\
 php artisan db:monitor\n\
