@@ -52,6 +52,10 @@ RUN npm install && \
     npm cache clean --force && \
     rm -rf node_modules
 
+# Debug: List contents of the build directory
+RUN ls -l public/build
+RUN cat public/build/manifest.json
+
 # Set correct permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
