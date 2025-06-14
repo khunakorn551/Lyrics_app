@@ -14,38 +14,32 @@ Route::get('/lyrics', [LyricsController::class, 'index'])->name('lyrics.index');
 Route::get('/lyrics/{lyric}', [LyricsController::class, 'show'])->name('lyrics.show');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact', [PageController::class, 'submitContact'])->name('contact.submit');
 
 // Authenticated routes
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard routes
     Route::get('/dashboard', function () {
         $user = auth()->user();
-        if (!$user) {
-            return redirect()->route('login');
-        }
-
-        if ($user->isAdmin()) {
+        if ($user && $user->isAdmin()) {
             return redirect()->route('admin.dashboard');
         }
-
-        // For regular users
-        $bookmarkedLyrics = $user->bookmarks()->with('lyrics')->latest()->take(4)->get();
-        $recentSongRequests = $user->songRequests()->latest()->take(5)->get();
-
-        return view('user.dashboard', compact('bookmarkedLyrics', 'recentSongRequests'));
+        return view('dashboard');
     })->name('dashboard');
 
-    // Admin-only routes
+    // Admin routes
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin/dashboard', function () {
             return view('admin.dashboard');
         })->name('admin.dashboard');
-
-        Route::get('/lyrics/create', [LyricsController::class, 'create'])->name('lyrics.create');
-        Route::post('/lyrics', [LyricsController::class, 'store'])->name('lyrics.store');
-        Route::get('/lyrics/{lyric}/edit', [LyricsController::class, 'edit'])->name('lyrics.edit');
-        Route::put('/lyrics/{lyric}', [LyricsController::class, 'update'])->name('lyrics.update');
-        Route::delete('/lyrics/{lyric}', [LyricsController::class, 'destroy'])->name('lyrics.destroy');
+        
+        Route::get('/admin/lyrics', [LyricsController::class, 'index'])->name('admin.lyrics.index');
+        Route::get('/admin/lyrics/create', [LyricsController::class, 'create'])->name('lyrics.create');
+        Route::post('/admin/lyrics', [LyricsController::class, 'store'])->name('lyrics.store');
+        Route::get('/admin/lyrics/{lyric}/edit', [LyricsController::class, 'edit'])->name('lyrics.edit');
+        Route::put('/admin/lyrics/{lyric}', [LyricsController::class, 'update'])->name('lyrics.update');
+        Route::delete('/admin/lyrics/{lyric}', [LyricsController::class, 'destroy'])->name('lyrics.destroy');
     });
 
     // Authenticated user routes
@@ -70,6 +64,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
     Route::post('/comments/{comment}/reply', [CommentController::class, 'reply'])->name('comments.reply');
     Route::post('/comments/{comment}/like', [CommentController::class, 'like'])->name('comments.like');
+
+    // Profile routes
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

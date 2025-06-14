@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lyrics;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
@@ -29,6 +30,20 @@ class PageController extends Controller
     public function contact()
     {
         return view('pages.contact');
+    }
+
+    public function submitContact(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        // Here you would typically send an email
+        // For now, we'll just redirect back with a success message
+        return redirect()->route('contact')->with('success', 'Thank you for your message. We will get back to you soon!');
     }
 
     public function privacy()
