@@ -5,7 +5,7 @@
                 {{ $lyric->title }} - {{ $lyric->artist }}
             </h2>
             <div class="flex space-x-4">
-                @if(auth()->user()->isAdmin())
+                @if(auth()->check() && auth()->user()->isAdmin())
                     <a href="{{ route('lyrics.edit', $lyric) }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700">
                         Edit
                     </a>
@@ -171,4 +171,30 @@
             form.classList.toggle('hidden');
         }
     </script>
+
+    @if(auth()->check())
+        <!-- Report Modal -->
+        <div id="reportModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full">
+            <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+                <div class="mt-3">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Report Lyrics</h3>
+                    <form action="{{ route('lyrics.report', $lyric) }}" method="POST" class="mt-4">
+                        @csrf
+                        <div class="mt-2">
+                            <label for="reason" class="block text-sm font-medium text-gray-700">Reason for Report</label>
+                            <textarea name="reason" id="reason" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required></textarea>
+                        </div>
+                        <div class="mt-4 flex justify-end space-x-3">
+                            <button type="button" onclick="document.getElementById('reportModal').classList.add('hidden')" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-500">
+                                Cancel
+                            </button>
+                            <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500">
+                                Submit Report
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endif
 </x-app-layout> 

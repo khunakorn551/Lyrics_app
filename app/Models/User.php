@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
+    public function isGuest()
+    {
+        return $this->role === 'guest';
+    }
+
     public function lyrics()
     {
         return $this->hasMany(Lyrics::class);

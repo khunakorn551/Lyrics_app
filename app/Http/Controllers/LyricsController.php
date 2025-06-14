@@ -10,7 +10,8 @@ class LyricsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // Only require auth for non-guest actions
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     /**
@@ -31,7 +32,7 @@ class LyricsController extends Controller
 
         $lyrics = $query->latest()->paginate(12);
 
-        if (auth()->user()->isAdmin()) {
+        if (auth()->check() && auth()->user()->isAdmin()) {
             return view('admin.lyrics.index', compact('lyrics'));
         }
 
@@ -44,7 +45,7 @@ class LyricsController extends Controller
     public function create()
     {
         if (!auth()->user()->isAdmin()) {
-            abort(403, 'Unauthorized action.');
+            return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
         return view('admin.lyrics.create');
     }
@@ -55,7 +56,7 @@ class LyricsController extends Controller
     public function store(Request $request)
     {
         if (!auth()->user()->isAdmin()) {
-            abort(403, 'Unauthorized action.');
+            return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
 
         $validated = $request->validate([
@@ -83,7 +84,7 @@ class LyricsController extends Controller
     {
         $lyric->load(['comments.user', 'comments.replies.user', 'comments.likes']);
 
-        if (auth()->user()->isAdmin()) {
+        if (auth()->check() && auth()->user()->isAdmin()) {
             return view('admin.lyrics.show', compact('lyric'));
         }
         return view('user.lyrics.show', compact('lyric'));
@@ -95,7 +96,7 @@ class LyricsController extends Controller
     public function edit(Lyrics $lyric)
     {
         if (!auth()->user()->isAdmin()) {
-            abort(403, 'Unauthorized action.');
+            return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
         return view('admin.lyrics.edit', compact('lyric'));
     }
@@ -106,7 +107,7 @@ class LyricsController extends Controller
     public function update(Request $request, Lyrics $lyric)
     {
         if (!auth()->user()->isAdmin()) {
-            abort(403, 'Unauthorized action.');
+            return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
 
         $validated = $request->validate([
@@ -134,7 +135,7 @@ class LyricsController extends Controller
     public function destroy(Lyrics $lyric)
     {
         if (!auth()->user()->isAdmin()) {
-            abort(403, 'Unauthorized action.');
+            return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
 
         if ($lyric->image_path) {
@@ -149,6 +150,10 @@ class LyricsController extends Controller
 
     public function bookmark(Lyrics $lyric)
     {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'You must be logged in to bookmark lyrics.');
+        }
+
         $user = auth()->user();
         $bookmark = $user->bookmarks()->where('lyrics_id', $lyric->id)->first();
         if ($bookmark) {
@@ -162,6 +167,10 @@ class LyricsController extends Controller
 
     public function report(Request $request, Lyrics $lyric)
     {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'You must be logged in to report lyrics.');
+        }
+
         $request->validate([
             'reason' => 'required|string|max:255',
         ]);
