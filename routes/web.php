@@ -25,7 +25,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         if ($user && $user->isAdmin()) {
             return redirect()->route('admin.dashboard');
         }
-        return view('dashboard');
+        
+        $bookmarkedLyrics = $user->bookmarks()->with('lyrics')->latest()->take(4)->get();
+        $recentSongRequests = $user->songRequests()->latest()->take(5)->get();
+        
+        return view('dashboard', compact('bookmarkedLyrics', 'recentSongRequests'));
     })->name('dashboard');
 
     // Admin routes
