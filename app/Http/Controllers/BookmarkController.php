@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lyrics;
+use App\Models\Bookmark;
 use Illuminate\Http\Request;
 
 class BookmarkController extends Controller
@@ -32,9 +33,14 @@ class BookmarkController extends Controller
         return back()->with('success', 'Lyrics bookmarked successfully.');
     }
 
-    public function destroy(Lyrics $lyric)
+    public function destroy(Bookmark $bookmark)
     {
-        auth()->user()->bookmarks()->where('lyrics_id', $lyric->id)->delete();
+        // Ensure the bookmark belongs to the authenticated user
+        if ($bookmark->user_id !== auth()->id()) {
+            return back()->with('error', 'Unauthorized action.');
+        }
+
+        $bookmark->delete();
         return back()->with('success', 'Bookmark removed successfully.');
     }
 }

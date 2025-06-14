@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
         }
 
         if ($user->isAdmin()) {
-            return app()->make(\App\Http\Controllers\Admin\DashboardController::class)->index();
+            return redirect()->route('admin.dashboard');
         }
 
         // For regular users
@@ -37,6 +37,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Admin-only routes
     Route::middleware(['admin'])->group(function () {
+        Route::get('/admin/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('admin.dashboard');
+
         Route::get('/lyrics/create', [LyricsController::class, 'create'])->name('lyrics.create');
         Route::post('/lyrics', [LyricsController::class, 'store'])->name('lyrics.store');
         Route::get('/lyrics/{lyric}/edit', [LyricsController::class, 'edit'])->name('lyrics.edit');
@@ -47,8 +51,11 @@ Route::middleware(['auth'])->group(function () {
     // Authenticated user routes
     Route::post('/lyrics/{lyric}/bookmark', [LyricsController::class, 'bookmark'])->name('lyrics.bookmark');
     Route::post('/lyrics/{lyric}/report', [LyricsController::class, 'report'])->name('lyrics.report');
+
+    // Bookmark routes
     Route::get('/bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.index');
     Route::post('/bookmarks/{lyric}', [BookmarkController::class, 'store'])->name('bookmarks.store');
+    Route::delete('/bookmarks/{bookmark}', [BookmarkController::class, 'destroy'])->name('bookmarks.destroy');
 
     // Song Request routes
     Route::get('/song-requests', [SongRequestController::class, 'index'])->name('song-requests.index');
