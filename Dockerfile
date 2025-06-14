@@ -2,7 +2,8 @@
 FROM php:8.2-apache
 
 # Enable Apache rewrite module
-RUN a2enmod rewrite
+RUN a2enmod rewrite \
+    && a2enmod headers
 
 # Set working directory
 WORKDIR /var/www/html
