@@ -52,13 +52,6 @@ RUN npm install && \
     npm cache clean --force && \
     rm -rf node_modules
 
-# Debug: List contents of the build directory
-RUN ls -l public/build
-RUN cat public/build/manifest.json
-
-# Debug: List contents of the public directory (root of served files)
-RUN ls -l public/
-
 # Set correct permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
@@ -87,11 +80,17 @@ RUN if [ ! -f .env ]; then cp .env.example .env; fi
 RUN sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=pgsql/' .env
 
 # Set environment variables
-RUN echo "APP_ENV=production" >> .env \
-    && echo "APP_DEBUG=true" >> .env \
-    && echo "LOG_LEVEL=debug" >> .env \
+RUN echo "APP_ENV=production" > .env \
+    && echo "APP_DEBUG=false" >> .env \
+    && echo "LOG_LEVEL=info" >> .env \
     && echo "SESSION_DRIVER=database" >> .env \
-    && echo "LOG_CHANNEL=daily" >> .env
+    && echo "LOG_CHANNEL=daily" >> .env \
+    && echo "ASSET_URL=${APP_URL}" >> .env
+
+# Debug: Print environment variables
+RUN cat .env | grep APP_ENV
+RUN cat .env | grep APP_URL
+RUN cat .env | grep ASSET_URL
 
 # Generate application key if not exists
 RUN php artisan key:generate --no-interaction
@@ -106,6 +105,7 @@ php artisan config:clear\n\
 php artisan cache:clear\n\
 php artisan view:clear\n\
 php artisan route:clear\n\
+php artisan optimize:clear\n\
 echo "Creating session table..."\n\
 php artisan session:table\n\
 echo "Running migrations..."\n\
