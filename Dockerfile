@@ -46,8 +46,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy app files
 COPY . /var/www/html
 
-# Install Node dependencies and build assets
-RUN npm install && npm run build
+# Install Node dependencies and build assets for production
+RUN npm install && \
+    npm run build && \
+    npm cache clean --force && \
+    rm -rf node_modules
 
 # Set correct permissions
 RUN chown -R www-data:www-data /var/www/html \
