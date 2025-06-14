@@ -15,12 +15,12 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 flex flex-col">
+        <div x-data="{ sidebarOpen: window.innerWidth >= 768 }" class="min-h-screen bg-gray-100 flex flex-col">
             @include('layouts.navigation')
 
             <div class="flex flex-1">
                 <!-- Sidebar -->
-                <div class="w-64 min-h-full bg-white shadow-lg">
+                <div :class="sidebarOpen ? 'w-64' : 'w-0 -ml-64 md:ml-0'" class="min-h-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out md:w-64 md:relative absolute z-40">
                     <div class="p-4">
                         <h2 class="text-lg font-semibold text-gray-800 mb-4">
                             @if(auth()->user()?->role === 'admin')
@@ -111,7 +111,7 @@
                 </div>
 
                 <!-- Main Content -->
-                <div class="flex-1 flex flex-col">
+                <div class="flex-1 flex flex-col" :class="sidebarOpen ? 'md:ml-64' : 'ml-0'">
                     <!-- Page Heading -->
                     @isset($header)
                         <header class="bg-white shadow">
