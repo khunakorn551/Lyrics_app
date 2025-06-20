@@ -19,7 +19,7 @@
                         {{ __('Lyrics') }}
                     </x-nav-link>
                     @auth
-                        @if(auth()->user()->isAdmin())
+                        @if(auth()->check() && auth()->user()->isAdmin())
                             <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                                 {{ __('Dashboard') }}
                             </x-nav-link>
@@ -98,7 +98,7 @@
                 {{ __('Lyrics') }}
             </x-responsive-nav-link>
             @auth
-                @if(auth()->user()->isAdmin())
+                @if(auth()->check() && auth()->user()->isAdmin())
                     <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         {{ __('Dashboard') }}
                     </x-responsive-nav-link>

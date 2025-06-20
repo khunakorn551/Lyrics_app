@@ -44,7 +44,7 @@ class LyricsController extends Controller
      */
     public function create()
     {
-        if (!auth()->user()->isAdmin()) {
+        if (!auth()->check() || !auth()->user()->isAdmin()) {
             return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
         return view('admin.lyrics.create');
@@ -55,7 +55,7 @@ class LyricsController extends Controller
      */
     public function store(Request $request)
     {
-        if (!auth()->user()->isAdmin()) {
+        if (!auth()->check() || !auth()->user()->isAdmin()) {
             return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
 
@@ -95,7 +95,7 @@ class LyricsController extends Controller
      */
     public function edit(Lyrics $lyric)
     {
-        if (!auth()->user()->isAdmin()) {
+        if (!auth()->check() || !auth()->user()->isAdmin()) {
             return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
         return view('admin.lyrics.edit', compact('lyric'));
@@ -106,7 +106,7 @@ class LyricsController extends Controller
      */
     public function update(Request $request, Lyrics $lyric)
     {
-        if (!auth()->user()->isAdmin()) {
+        if (!auth()->check() || !auth()->user()->isAdmin()) {
             return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
 
@@ -134,7 +134,7 @@ class LyricsController extends Controller
      */
     public function destroy(Lyrics $lyric)
     {
-        if (!auth()->user()->isAdmin()) {
+        if (!auth()->check() || !auth()->user()->isAdmin()) {
             return redirect()->route('login')->with('error', 'You must be logged in to perform this action.');
         }
 

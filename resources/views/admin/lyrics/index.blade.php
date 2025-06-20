@@ -52,7 +52,7 @@
                                                 View Lyrics
                                             </a>
                                             
-                                            @if(auth()->user()->isAdmin())
+                                            @if(auth()->check() && auth()->user()->isAdmin())
                                                 <div class="flex space-x-2">
                                                     <a href="{{ route('lyrics.edit', $lyric) }}" 
                                                        class="inline-flex items-center px-3 py-1 bg-yellow-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition ease-in-out duration-150">

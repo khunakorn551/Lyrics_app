@@ -95,7 +95,7 @@
                                         </form>
 
                                         <!-- Admin Actions -->
-                                        @if(auth()->user()->isAdmin())
+                                        @if(auth()->check() && auth()->user()->isAdmin())
                                             <button onclick="toggleReplyForm('{{ $comment->id }}')" class="text-blue-600 hover:text-blue-900 text-sm font-medium">Reply</button>
                                             <form action="{{ route('comments.destroy', $comment) }}" method="POST" class="inline">
                                                 @csrf
@@ -108,7 +108,7 @@
                                 <p class="text-gray-700 mb-4">{{ $comment->content }}</p>
 
                                 <!-- Reply Form (Admin Only) -->
-                                @if(auth()->user()->isAdmin())
+                                @if(auth()->check() && auth()->user()->isAdmin())
                                     <div id="reply-form-{{ $comment->id }}" class="hidden mt-4 pl-4 border-l-2 border-blue-200">
                                         <form action="{{ route('comments.store', $lyric) }}" method="POST">
                                             @csrf
@@ -144,7 +144,7 @@
                                                     </button>
                                                 </form>
 
-                                                @if(auth()->user()->isAdmin() || Auth::id() === $reply->user_id)
+                                                @if((auth()->check() && auth()->user()->isAdmin()) || Auth::id() === $reply->user_id)
                                                     <form action="{{ route('comments.destroy', $reply) }}" method="POST" class="inline">
                                                         @csrf
                                                         @method('DELETE')

@@ -70,7 +70,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        if (!Auth::user()->isAdmin()) {
+        if (!Auth::check() || !Auth::user()->isAdmin()) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -91,7 +91,7 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         // Only the owner or an admin can delete a comment
-        if (!Auth::user()->isAdmin() && Auth::id() !== $comment->user_id) {
+        if (!Auth::check() || (!Auth::user()->isAdmin() && Auth::id() !== $comment->user_id)) {
             abort(403, 'Unauthorized action.');
         }
 

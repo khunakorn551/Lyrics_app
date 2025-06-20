@@ -12,7 +12,7 @@ class PageController extends Controller
     {
         $user = auth()->user();
         if ($user) {
-            if ($user->isAdmin()) {
+            if ($user && $user->isAdmin()) {
                 return redirect()->route('admin.dashboard');
             }
             return redirect()->route('dashboard');

@@ -18,7 +18,7 @@ class SongRequestController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->isAdmin()) {
+        if (Auth::check() && Auth::user()->isAdmin()) {
             $requests = SongRequest::with('user')->latest()->paginate(10);
             return view('admin.song-requests.index', compact('requests'));
         }
@@ -59,7 +59,7 @@ class SongRequestController extends Controller
      */
     public function show(SongRequest $songRequest)
     {
-        if (!Auth::user()->isAdmin() && Auth::id() !== $songRequest->user_id) {
+        if (!Auth::check() || !Auth::user()->isAdmin() && Auth::id() !== $songRequest->user_id) {
             abort(403);
         }
 
@@ -79,7 +79,7 @@ class SongRequestController extends Controller
      */
     public function update(Request $request, SongRequest $songRequest)
     {
-        if (!Auth::user()->isAdmin()) {
+        if (!Auth::check() || !Auth::user()->isAdmin()) {
             abort(403);
         }
 
@@ -99,7 +99,7 @@ class SongRequestController extends Controller
      */
     public function destroy(SongRequest $songRequest)
     {
-        if (!Auth::user()->isAdmin() && Auth::id() !== $songRequest->user_id) {
+        if (!Auth::check() || !Auth::user()->isAdmin() && Auth::id() !== $songRequest->user_id) {
             abort(403);
         }
 

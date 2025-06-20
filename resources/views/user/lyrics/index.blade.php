@@ -49,7 +49,7 @@
                                         </h3>
                                         <p class="text-gray-700 mb-2">{{ $lyric->artist }}</p>
                                         <p class="text-sm text-gray-600 mb-4">{{ $lyric->category }}</p>
-                                        <!-- DEBUG: Is Admin? {{ auth()->user()->isAdmin() ? 'True' : 'False' }} -->
+                                        <!-- DEBUG: Is Admin? {{ (auth()->check() && auth()->user()->isAdmin()) ? 'True' : 'False' }} -->
                                         <div class="flex justify-between items-center">
                                             <div class="flex items-center space-x-2">
                                                 <a href="{{ route('lyrics.show', $lyric) }}" 

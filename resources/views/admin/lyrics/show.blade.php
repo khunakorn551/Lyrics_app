@@ -2,9 +2,9 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ $lyric->title }} - {{ $lyric->artist }} ({{ auth()->user()->isAdmin() ? 'Admin View' : 'User View' }})
+                {{ $lyric->title }} - {{ $lyric->artist }} ({{ (auth()->check() && auth()->user()->isAdmin()) ? 'Admin View' : 'User View' }})
             </h2>
-            @if(auth()->user()->isAdmin())
+            @if(auth()->check() && auth()->user()->isAdmin())
                 <div class="flex space-x-4">
                     <a href="{{ route('lyrics.edit', $lyric) }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700">
                         Edit
