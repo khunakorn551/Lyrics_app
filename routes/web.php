@@ -6,6 +6,7 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\SongRequestController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 // Redirect /admin to /admin/dashboard to prevent controller resolution errors
@@ -37,9 +38,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Admin routes
     Route::middleware(['admin'])->group(function () {
-        Route::get('/admin/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('admin.dashboard');
+        Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
         
         Route::get('/admin/lyrics', [LyricsController::class, 'index'])->name('admin.lyrics.index');
         Route::get('/admin/lyrics/create', [LyricsController::class, 'create'])->name('lyrics.create');
