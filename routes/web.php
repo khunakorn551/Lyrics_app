@@ -8,6 +8,9 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
+// Redirect /admin to /admin/dashboard to prevent controller resolution errors
+Route::redirect('/admin', '/admin/dashboard');
+
 // Public routes
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/lyrics', [LyricsController::class, 'index'])->name('lyrics.index');
