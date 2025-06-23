@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 // Redirect /admin to /admin/dashboard to prevent controller resolution errors
 Route::get('/admin', function () {
-    return redirect('/admin/dashboard');
-});
+    return redirect()->route('admin.dashboard');
+})->name('admin.redirect');
+
 
 // Public routes
 Route::get('/', [PageController::class, 'home'])->name('home');
