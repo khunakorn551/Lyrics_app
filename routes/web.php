@@ -10,7 +10,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 // Redirect /admin to /admin/dashboard to prevent controller resolution errors
-Route::redirect('/admin', '/admin/dashboard');
+Route::get('/admin', function () {
+    return redirect('/admin/dashboard');
+});
 
 // Public routes
 Route::get('/', [PageController::class, 'home'])->name('home');
