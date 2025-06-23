@@ -39,7 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     // Admin routes
-    Route::middleware(['admin'])->group(function () {
+    Route::middleware(['admincheck'])->group(function () {
         Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
         
         Route::get('/admin/lyrics', [LyricsController::class, 'index'])->name('admin.lyrics.index');
