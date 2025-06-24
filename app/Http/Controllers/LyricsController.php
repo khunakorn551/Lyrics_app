@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lyrics;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class LyricsController extends Controller
 {
@@ -12,6 +13,13 @@ class LyricsController extends Controller
     {
         // Only require auth for non-guest actions
         $this->middleware('auth')->except(['index', 'show']);
+    }
+
+    public function boot(): void
+    {
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 
     /**
