@@ -43,7 +43,7 @@
                                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                                         @if($lyric->image_path)
                                             <div class="aspect-w-16 aspect-h-9">
-                                                <img src="{{ asset('storage/' . $lyric->image_path) }}" 
+                                                <img src="{{ Storage::url($lyric->image_path) }}" 
                                                      alt="Lyrics for {{ $lyric->title }} by {{ $lyric->artist }}" 
                                                      class="w-full h-48 object-cover">
                                             </div>

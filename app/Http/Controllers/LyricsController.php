@@ -68,7 +68,7 @@ class LyricsController extends Controller
         $validated['user_id'] = auth()->id();
 
         if ($request->hasFile('image')) {
-            $validated['image_path'] = $request->file('image')->store('lyrics-images', 'public');
+            $validated['image_path'] = $request->file('image')->store('lyrics-images');
         }
 
         Lyrics::create($validated);
@@ -118,9 +118,9 @@ class LyricsController extends Controller
 
         if ($request->hasFile('image')) {
             if ($lyric->image_path) {
-                Storage::disk('public')->delete($lyric->image_path);
+                Storage::delete($lyric->image_path);
             }
-            $validated['image_path'] = $request->file('image')->store('lyrics-images', 'public');
+            $validated['image_path'] = $request->file('image')->store('lyrics-images');
         }
 
         $lyric->update($validated);
@@ -139,7 +139,7 @@ class LyricsController extends Controller
         }
 
         if ($lyric->image_path) {
-            Storage::disk('public')->delete($lyric->image_path);
+            Storage::delete($lyric->image_path);
         }
         
         $lyric->delete();
