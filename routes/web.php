@@ -40,9 +40,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     // Admin routes
-    Route::middleware(['admin'])->group(function () {
+    Route::middleware(['is_admin'])->group(function () {
         Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-        
         Route::get('/admin/lyrics', [LyricsController::class, 'index'])->name('admin.lyrics.index');
         Route::get('/admin/lyrics/create', [LyricsController::class, 'create'])->name('lyrics.create');
         Route::post('/admin/lyrics', [LyricsController::class, 'store'])->name('lyrics.store');
