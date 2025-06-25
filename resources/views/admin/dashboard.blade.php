@@ -115,6 +115,21 @@
                     </div>
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-4">Website Visits (Last 7 Days)</h3>
+                        <canvas id="visitsChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-4">Average Session Duration (Minutes)</h3>
+                        <canvas id="durationChart"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
