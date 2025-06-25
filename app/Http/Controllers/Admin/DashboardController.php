@@ -17,21 +17,32 @@ class DashboardController extends Controller
         // Get recent uploads with pagination
         $recentLyrics = Lyrics::with('user')->latest()->paginate(10); // Paginate with 10 items per page
 
-        return view('admin.dashboard', compact('lyricsChartData', 'recentLyrics'));
+        // User activity data
+        $userActivityData = [
+            'new_users' => \App\Models\User::where('created_at', '>=', now()->subDays(7))->count(),
+            'active_users' => \App\Models\User::where('last_login_at', '>=', now()->subDays(7))->count(),
+            'total_bookmarks' => \App\Models\Bookmark::count(),
+        ];
+
+        return view('admin.dashboard', compact('lyricsChartData', 'recentLyrics', 'userActivityData'));
     }
 
     private function getLyricsChartData()
     {
         $days = collect(range(6, 0))->map(function ($day) {
-            return Carbon::now()->subDays($day)->format('M d');
+            return Carbon::now()->subDays($day);
         });
 
-        $data = $days->map(function ($day) {
-            return Lyrics::whereDate('created_at', Carbon::parse($day))->count();
+        $labels = $days->map(function ($date) {
+            return $date->format('M d');
+        });
+
+        $data = $days->map(function ($date) {
+            return Lyrics::whereDate('created_at', $date->toDateString())->count();
         });
 
         return [
-            'labels' => $days->toArray(),
+            'labels' => $labels->toArray(),
             'data' => $data->toArray()
         ];
     }
