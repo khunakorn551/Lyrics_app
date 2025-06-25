@@ -156,9 +156,9 @@
                 datasets: [{
                     label: 'User Activity',
                     data: [
-                        {{ \App\Models\User::where('created_at', '>=', now()->subDays(7))->count() }},
-                        {{ \App\Models\User::where('last_login_at', '>=', now()->subDays(7))->count() }},
-                        {{ \App\Models\Bookmark::count() }}
+                        {{ $userActivityData['new_users'] }},
+                        {{ $userActivityData['active_users'] }},
+                        {{ $userActivityData['total_bookmarks'] }}
                     ],
                     backgroundColor: [
                         'rgba(59, 130, 246, 0.5)',
