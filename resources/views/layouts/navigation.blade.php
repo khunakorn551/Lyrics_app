@@ -1,9 +1,9 @@
-<nav x-data="{ sidebarOpen: false }" class="bg-gradient-to-r from-indigo-600 to-blue-500 shadow-md">
+<nav x-data="{ sidebarOpen: false }" class="bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex justify-between h-16 items-center">
             <!-- Hamburger for sidebar (mobile only) -->
             <div class="flex items-center lg:hidden">
-                <button @click="sidebarOpen = !sidebarOpen" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-indigo-700 focus:outline-none transition duration-150 ease-in-out">
+                <button @click="sidebarOpen = !sidebarOpen" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -12,17 +12,17 @@
             <!-- Logo -->
             <div class="shrink-0 flex items-center min-w-[60px]">
                 <a href="{{ route('home') }}">
-                    <x-application-logo class="block h-12 w-auto" style="filter: brightness(0) invert(1);" />
+                    <x-application-logo class="block h-12 w-auto" />
                 </a>
             </div>
             <!-- Auth buttons/user dropdown (desktop only) -->
             <div class="hidden lg:flex items-center space-x-4 ml-auto">
                 @guest
-                    <a href="{{ route('login') }}" class="px-4 py-2 text-sm font-semibold text-white bg-indigo-500 hover:bg-indigo-700 rounded-lg transition">Login</a>
-                    <a href="{{ route('register') }}" class="px-4 py-2 text-sm font-semibold text-indigo-600 bg-white hover:bg-indigo-100 rounded-lg transition">Register</a>
+                    <a href="{{ route('login') }}" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Login</a>
+                    <a href="{{ route('register') }}" class="px-4 py-2 text-sm text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg">Register</a>
                 @else
                     <div class="relative group">
-                        <button class="flex items-center px-4 py-2 text-sm text-white hover:bg-indigo-700 rounded-lg focus:outline-none transition">
+                        <button class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg focus:outline-none">
                             {{ Auth::user()->name }}
                             <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
