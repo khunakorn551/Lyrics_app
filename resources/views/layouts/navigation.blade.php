@@ -12,7 +12,7 @@
             <!-- Logo -->
             <div class="shrink-0 flex items-center min-w-[60px]">
                 <a href="{{ route('home') }}">
-                    <x-application-logo class="block h-8 w-auto" />
+                    <x-application-logo class="block h-12 w-auto" />
                 </a>
             </div>
             <!-- Auth buttons/user dropdown (desktop only) -->
