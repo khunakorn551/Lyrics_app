@@ -13,31 +13,29 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Statistics -->
-            <div class="flex justify-center mb-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 w-full max-w-3xl">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6">
-                            <h3 class="text-lg font-semibold mb-2">Total Lyrics</h3>
-                            <p class="text-3xl font-bold text-blue-600">{{ \App\Models\Lyrics::count() }}</p>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Total Lyrics</h3>
+                        <p class="text-3xl font-bold text-blue-600">{{ \App\Models\Lyrics::count() }}</p>
                     </div>
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6">
-                            <h3 class="text-lg font-semibold mb-2">Total Users</h3>
-                            <p class="text-3xl font-bold text-green-600">{{ \App\Models\User::count() }}</p>
-                        </div>
+                </div>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Total Users</h3>
+                        <p class="text-3xl font-bold text-green-600">{{ \App\Models\User::count() }}</p>
                     </div>
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6">
-                            <h3 class="text-lg font-semibold mb-2">Total Bookmarks</h3>
-                            <p class="text-3xl font-bold text-purple-600">{{ \App\Models\Bookmark::count() }}</p>
-                        </div>
+                </div>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Total Bookmarks</h3>
+                        <p class="text-3xl font-bold text-purple-600">{{ \App\Models\Bookmark::count() }}</p>
                     </div>
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6">
-                            <h3 class="text-lg font-semibold mb-2">Pending Requests</h3>
-                            <p class="text-3xl font-bold text-yellow-600">{{ \App\Models\SongRequest::where('status', 'pending')->count() }}</p>
-                        </div>
+                </div>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Pending Requests</h3>
+                        <p class="text-3xl font-bold text-yellow-600">{{ \App\Models\SongRequest::where('status', 'pending')->count() }}</p>
                     </div>
                 </div>
             </div>
