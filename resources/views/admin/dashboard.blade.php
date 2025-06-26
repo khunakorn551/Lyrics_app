@@ -200,6 +200,57 @@
                 }
             }
         });
+
+        // Website Visits (Last 7 Days) Chart
+        const visitsCtx = document.getElementById('visitsChart').getContext('2d');
+        new Chart(visitsCtx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($visitAnalytics['labels']) !!},
+                datasets: [{
+                    label: 'Visits',
+                    data: {!! json_encode($visitAnalytics['counts']) !!},
+                    borderColor: 'rgb(16, 185, 129)',
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+
+        // Average Session Duration (Minutes) Chart
+        const durationCtx = document.getElementById('durationChart').getContext('2d');
+        new Chart(durationCtx, {
+            type: 'bar',
+            data: {
+                labels: {!! json_encode($visitAnalytics['labels']) !!},
+                datasets: [{
+                    label: 'Avg. Session Duration (min)',
+                    data: {!! json_encode($visitAnalytics['avg_durations']) !!},
+                    backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                    borderColor: 'rgb(59, 130, 246)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     </script>
     @endpush
 </x-app-layout> 

@@ -42,6 +42,8 @@ class DashboardController extends Controller
             'avg_durations' => $avgDurations->toArray(),
         ];
  
+        dd($visitAnalytics);
+
         return view('admin.dashboard', compact('lyricsChartData', 'recentLyrics', 'userActivityData', 'visitAnalytics'));
     }
 
