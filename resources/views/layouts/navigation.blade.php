@@ -148,4 +148,16 @@
             </div>
         @endauth
     </div>
+
+    <!-- Sidebar -->
+    <div :class="[open ? 'w-52 left-0' : 'w-0 -left-52', 'fixed top-0 h-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out z-50 border-r border-gray-200 lg:w-52 lg:relative lg:left-0']">
+        <!-- Close button for mobile -->
+        <div class="flex justify-end lg:hidden p-2">
+            <button @click="open = false" class="text-gray-400 hover:text-gray-700 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
 </nav>
