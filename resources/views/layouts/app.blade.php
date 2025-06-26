@@ -15,12 +15,12 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased overflow-x-hidden">
-        <div x-data="{ sidebarOpen: window.innerWidth >= 768 }" class="min-h-screen bg-gray-100 flex flex-col overflow-x-hidden">
+        <div x-data="{ sidebarOpen: window.innerWidth >= 1024 }" class="min-h-screen bg-gray-100 flex flex-col overflow-x-hidden">
             @include('layouts.navigation')
 
             <div class="flex flex-1 overflow-x-hidden">
                 <!-- Sidebar -->
-                <div :class="sidebarOpen ? 'w-64' : 'w-0 -ml-64 md:ml-0'" class="min-h-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out md:w-64 md:relative absolute z-40">
+                <div :class="sidebarOpen ? 'w-52' : 'w-0 -ml-52 lg:ml-0'" class="min-h-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out lg:w-52 lg:relative absolute z-40 border-r border-gray-200">
                     <div class="p-4">
                         <h2 class="text-lg font-semibold text-gray-800 mb-4">
                             @if(auth()->check() && auth()->user()->isAdmin())
@@ -111,18 +111,18 @@
                 </div>
 
                 <!-- Main Content -->
-                <div class="flex-1 flex flex-col max-w-full" :class="sidebarOpen ? 'md:ml-64' : 'ml-0'">
+                <div class="flex-1 flex flex-col max-w-full" :class="sidebarOpen ? 'lg:ml-52' : 'ml-0'">
                     <!-- Page Heading -->
                     @isset($header)
-                        <header class="bg-white shadow">
+                        <header class="bg-white shadow mb-4">
                             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                                {{ $header }}
+                                <h1 class="text-2xl font-bold text-gray-900 border-b border-gray-200 pb-2">{{ $header }}</h1>
                             </div>
                         </header>
                     @endisset
 
                     <!-- Page Content -->
-                    <main class="flex-1 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full overflow-x-hidden">
+                    <main class="flex-1 py-6 px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto w-full overflow-x-hidden">
                         {{ $slot }}
                     </main>
 
