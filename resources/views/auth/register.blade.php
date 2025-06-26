@@ -1,7 +1,4 @@
 <x-guest-layout>
-    <a href="/">
-        <x-application-logo class="w-32 h-32 mx-auto mb-4" />
-    </a>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
