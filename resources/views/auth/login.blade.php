@@ -2,6 +2,10 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <a href="/">
+        <x-application-logo class="w-32 h-32 mx-auto mb-4" />
+    </a>
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
