@@ -18,7 +18,7 @@
         </div>
     </div>
     <!-- Sidebar -->
-    <div :class="[sidebarOpen ? 'w-64 left-0' : 'w-0 -left-64', 'fixed top-0 h-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out z-50 border-r border-gray-200 lg:w-52 lg:relative lg:left-0']">
+    <div :class="[sidebarOpen ? 'w-64 left-0' : 'w-0 -left-64', 'fixed top-0 h-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out z-50 border-r border-gray-200 lg:hidden']">
         <!-- Close button for mobile -->
         <div class="flex justify-end lg:hidden p-2">
             <button @click="sidebarOpen = false" class="text-gray-400 hover:text-gray-700 focus:outline-none">
