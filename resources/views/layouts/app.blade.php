@@ -14,11 +14,11 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div x-data="{ sidebarOpen: window.innerWidth >= 768 }" class="min-h-screen bg-gray-100 flex flex-col">
+    <body class="font-sans antialiased overflow-x-hidden">
+        <div x-data="{ sidebarOpen: window.innerWidth >= 768 }" class="min-h-screen bg-gray-100 flex flex-col overflow-x-hidden">
             @include('layouts.navigation')
 
-            <div class="flex flex-1">
+            <div class="flex flex-1 overflow-x-hidden">
                 <!-- Sidebar -->
                 <div :class="sidebarOpen ? 'w-64' : 'w-0 -ml-64 md:ml-0'" class="min-h-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out md:w-64 md:relative absolute z-40">
                     <div class="p-4">
@@ -111,7 +111,7 @@
                 </div>
 
                 <!-- Main Content -->
-                <div class="flex-1 flex flex-col" :class="sidebarOpen ? 'md:ml-64' : 'ml-0'">
+                <div class="flex-1 flex flex-col max-w-full" :class="sidebarOpen ? 'md:ml-64' : 'ml-0'">
                     <!-- Page Heading -->
                     @isset($header)
                         <header class="bg-white shadow">
@@ -122,7 +122,7 @@
                     @endisset
 
                     <!-- Page Content -->
-                    <main class="flex-1 py-6 px-4 sm:px-6 lg:px-8">
+                    <main class="flex-1 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full overflow-x-hidden">
                         {{ $slot }}
                     </main>
 
