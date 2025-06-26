@@ -65,6 +65,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/song-requests', [SongRequestController::class, 'store'])->name('song-requests.store');
     Route::get('/song-requests/{songRequest}', [SongRequestController::class, 'show'])->name('song-requests.show');
     Route::delete('/song-requests/{songRequest}', [SongRequestController::class, 'destroy'])->name('song-requests.destroy');
+    Route::put('/song-requests/{songRequest}', [SongRequestController::class, 'update'])->name('song-requests.update');
 
     // Comments
     Route::post('/lyrics/{lyric}/comments', [CommentController::class, 'store'])->name('comments.store');

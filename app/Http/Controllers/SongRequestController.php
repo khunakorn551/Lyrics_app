@@ -79,19 +79,16 @@ class SongRequestController extends Controller
      */
     public function update(Request $request, SongRequest $songRequest)
     {
-        if (!Auth::check() || !Auth::user()->isAdmin()) {
-            abort(403);
-        }
-
-        $validated = $request->validate([
+        $request->validate([
             'status' => 'required|in:pending,approved,rejected',
-            'admin_response' => 'nullable|string'
+            'admin_response' => 'nullable|string',
         ]);
 
-        $songRequest->update($validated);
+        $songRequest->status = $request->status;
+        $songRequest->admin_response = $request->admin_response;
+        $songRequest->save();
 
-        return redirect()->route('song-requests.index')
-            ->with('success', 'Song request updated successfully.');
+        return redirect()->route('song-requests.index')->with('success', 'Song request updated successfully.');
     }
 
     /**
