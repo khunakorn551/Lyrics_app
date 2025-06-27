@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-semibold mb-4">Introduction</h3>
-                    <p class="mb-4">Your privacy is important to us. This privacy policy explains how we collect, use, disclose, and safeguard your information when you visit our website [Your Website URL], including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the "Site"). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the Site.</p>
+                    <p class="mb-4">Your privacy is important to us. This privacy policy explains how we collect, use, disclose, and safeguard your information when you visit our website https://www.lyrics-app-1.com, including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the "Site"). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the Site.</p>
 
                     <h3 class="text-lg font-semibold mb-4">Information We Collect</h3>
                     <p class="mb-4">We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
@@ -40,7 +40,7 @@
                     <p class="mb-4">We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.</p>
 
                     <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-                    <p>If you have questions or comments about this Privacy Policy, please contact us at [Your Contact Email].</p>
+                    <p>If you have questions or comments about this Privacy Policy, please contact us at <a href="mailto:info@lyrics-app-1.com">jan842070@gmail.com</a>.</p>
                 </div>
             </div>
         </div>

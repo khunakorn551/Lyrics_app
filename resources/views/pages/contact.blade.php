@@ -56,7 +56,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <h4 class="font-medium text-gray-900 mb-2">Email</h4>
-                                    <p class="text-gray-600">support@lyricsapp.com</p>
+                                    <p class="text-gray-600">jan842070@gmail.com</p>
                                 </div>
                                 <div>
                                     <h4 class="font-medium text-gray-900 mb-2">Follow Us</h4>

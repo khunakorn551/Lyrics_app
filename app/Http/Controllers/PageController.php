@@ -41,8 +41,16 @@ class PageController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Here you would typically send an email
-        // For now, we'll just redirect back with a success message
+        // Send email to site owner
+        \Mail::raw(
+            "Name: {$validated['name']}\nEmail: {$validated['email']}\nSubject: {$validated['subject']}\nMessage: {$validated['message']}",
+            function ($message) use ($validated) {
+                $message->to('jan842070@gmail.com')
+                        ->subject('Contact Form: ' . $validated['subject'])
+                        ->replyTo($validated['email'], $validated['name']);
+            }
+        );
+
         return redirect()->route('contact')->with('success', 'Thank you for your message. We will get back to you soon!');
     }
 

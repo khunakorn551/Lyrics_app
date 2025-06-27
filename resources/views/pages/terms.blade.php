@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-semibold mb-4">Introduction</h3>
-                    <p class="mb-4">Welcome to [Your Website Name]! These Terms of Service (referred to as "Terms") govern your use of our website and services. By accessing or using our website, you agree to comply with and be bound by these Terms. If you do not agree to these Terms, please do not use our website.</p>
+                    <p class="mb-4">Welcome to Lyrics App! These Terms of Service (referred to as "Terms") govern your use of our website and services. By accessing or using our website, you agree to comply with and be bound by these Terms. If you do not agree to these Terms, please do not use our website.</p>
 
                     <h3 class="text-lg font-semibold mb-4">Acceptance of Terms</h3>
                     <p class="mb-4">By accessing or using our website, you acknowledge that you have read, understood, and agree to be bound by these Terms, as well as our Privacy Policy. These Terms apply to all visitors, users, and others who access or use the Service.</p>
@@ -25,7 +25,7 @@
                     <p class="mb-4">Our Service allows you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material ("Content"). You are responsible for the Content that you post on or through the Service, including its legality, reliability, and appropriateness.</p>
 
                     <h3 class="text-lg font-semibold mb-4">Links to Other Websites</h3>
-                    <p class="mb-4">Our Service may contain links to third-party websites or services that are not owned or controlled by [Your Website Name]. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party websites or services. We do not warrant the offerings of any of these entities/individuals or their websites.</p>
+                    <p class="mb-4">Our Service may contain links to third-party websites or services that are not owned or controlled by Lyrics App. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party websites or services. We do not warrant the offerings of any of these entities/individuals or their websites.</p>
 
                     <h3 class="text-lg font-semibold mb-4">Termination</h3>
                     <p class="mb-4">We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of the Terms.</p>
@@ -34,7 +34,7 @@
                     <p class="mb-4">These Terms shall be governed and construed in accordance with the laws of [Your Country/State], without regard to its conflict of law provisions.</p>
 
                     <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-                    <p>If you have any questions about these Terms, please contact us at [Your Contact Email].</p>
+                    <p>If you have any questions about these Terms, please contact us at <a href="mailto:info@lyrics-app-1.com">jan842070@gmail.com</a>.</p>
                 </div>
             </div>
         </div>
