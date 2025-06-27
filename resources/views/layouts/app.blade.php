@@ -113,6 +113,7 @@
                 <!-- Main Content -->
                 <div class="flex-1 flex flex-col max-w-full lg:ml-0">
                     <!-- Page Heading -->
+                    @include('layouts.header')
                     <!-- Page Content -->
                     <main class="flex-1 py-6 px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto w-full overflow-x-hidden lg:px-0">
                         {{ $slot }}

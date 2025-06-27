@@ -1,1 +1,1 @@
-<img src="{{ asset('images/my-logo.png') }}" alt="Logo" class="block" style="object-fit:contain;" {{ $attributes }} />
+<img src="{{ asset('images/my-logo.png') }}" alt="Logo" class="block w-10 h-10" style="object-fit:contain;" {{ $attributes }} />
