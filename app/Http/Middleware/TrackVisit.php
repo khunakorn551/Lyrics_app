@@ -13,6 +13,13 @@ class TrackVisit
 {
     public function handle(Request $request, Closure $next)
     {
+        \Log::info('TrackVisit middleware fired', [
+            'session_id' => Session::getId(),
+            'ip' => $request->ip(),
+            'user_id' => Auth::check() ? Auth::id() : null,
+            'url' => $request->fullUrl(),
+        ]);
+
         $sessionId = Session::getId();
         $userId = Auth::check() ? Auth::id() : null;
         $ip = $request->ip();
