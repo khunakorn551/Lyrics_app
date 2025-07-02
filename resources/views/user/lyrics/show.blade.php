@@ -193,4 +193,6 @@
             </div>
         </div>
     @endif
+
+    <pre>{{ var_dump($lyric->about) }}</pre>
 </x-app-layout> 
