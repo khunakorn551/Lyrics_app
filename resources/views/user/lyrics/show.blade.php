@@ -42,16 +42,18 @@
                     </div>
                     
                     <!-- Original Content Section (for SEO & Copyright) -->
-                    <div class="w-full max-w-xl bg-gray-100 rounded-lg p-6 mb-8 text-gray-700">
-                        <h3 class="text-lg font-semibold mb-2">About These Lyrics:</h3>
-                        <p>
-                            <!-- Placeholder for original content. Replace with unique, human-written text relevant to the song, artist, or genre. -->
-                            This section can include interesting facts about the song's origin, the artist's inspiration, musical analysis, or cultural impact. Aim for 150-300 words of unique content to boost SEO and establish copyright. This helps search engines understand the context of the lyrics and adds value for visitors.
-                        </p>
-                        <p class="mt-4 text-xs text-gray-500">
-                            &copy; [Current Year] [Your Website Name]. All rights reserved.
-                        </p>
-                    </div>
+                    @if($lyric->user && $lyric->user->isAdmin())
+                        <div class="w-full max-w-xl bg-gray-100 rounded-lg p-6 mb-8 text-gray-700">
+                            <h3 class="text-lg font-semibold mb-2">About These Lyrics:</h3>
+                            <p>
+                                <!-- Placeholder for original content. Replace with unique, human-written text relevant to the song, artist, or genre. -->
+                                This section can include interesting facts about the song's origin, the artist's inspiration, musical analysis, or cultural impact. Aim for 150-300 words of unique content to boost SEO and establish copyright. This helps search engines understand the context of the lyrics and adds value for visitors.
+                            </p>
+                            <p class="mt-4 text-xs text-gray-500">
+                                &copy; [Current Year] [Your Website Name]. All rights reserved.
+                            </p>
+                        </div>
+                    @endif
 
                     <!-- AdSense Spot (Above Comments) -->
                     <div class="w-full max-w-xl bg-gray-200 p-4 rounded-lg mb-8 text-center text-gray-600">
