@@ -42,7 +42,12 @@
                     </div>
                     
                     <!-- Original Content Section (for SEO & Copyright) -->
-                    @if($lyric->user && $lyric->user->isAdmin())
+                    @if($lyric->user && $lyric->user->isAdmin() && $lyric->about)
+                        <div class="w-full max-w-xl bg-gray-100 rounded-lg p-6 mb-8 text-gray-700">
+                            <h3 class="text-lg font-semibold mb-2">About These Lyrics:</h3>
+                            <p>{!! nl2br(e($lyric->about)) !!}</p>
+                        </div>
+                    @elseif($lyric->user && $lyric->user->isAdmin())
                         <div class="w-full max-w-xl bg-gray-100 rounded-lg p-6 mb-8 text-gray-700">
                             <h3 class="text-lg font-semibold mb-2">About These Lyrics:</h3>
                             <p>
