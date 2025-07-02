@@ -70,7 +70,8 @@ class LyricsController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
-            'image' => 'required|image|max:5120' // Max 5MB
+            'image' => 'required|image|max:5120', // Max 5MB
+            'about' => 'nullable|string',
         ]);
 
         $validated['user_id'] = auth()->id();
