@@ -37,6 +37,12 @@
                             <x-input-error class="mt-2" :messages="$errors->get('image')" />
                         </div>
 
+                        <div>
+                            <x-input-label for="about" :value="__('About These Lyrics (optional)')" />
+                            <textarea id="about" name="about" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" rows="5">{{ old('about', $lyric->about) }}</textarea>
+                            <x-input-error class="mt-2" :messages="$errors->get('about')" />
+                        </div>
+
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __('Update Lyrics') }}</x-primary-button>
                             <a href="{{ route('lyrics.show', $lyric) }}" class="text-gray-600 hover:text-gray-900">Cancel</a>

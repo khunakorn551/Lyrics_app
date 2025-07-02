@@ -122,7 +122,8 @@ class LyricsController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
-            'image' => 'nullable|image|max:5120' // Max 5MB
+            'image' => 'nullable|image|max:5120', // Max 5MB
+            'about' => 'nullable|string',
         ]);
 
         if ($request->hasFile('image')) {
