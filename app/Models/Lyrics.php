@@ -15,6 +15,7 @@ class Lyrics extends Model
         'content',
         'user_id',
         'image_path',
+        'about',
     ];
 
     public function user()
