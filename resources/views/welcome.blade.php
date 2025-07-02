@@ -45,7 +45,7 @@
                                             <div class="aspect-w-16 aspect-h-9">
                                                 <img src="{{ Storage::url($lyric->image_path) }}" 
                                                      alt="Lyrics for {{ $lyric->title }} by {{ $lyric->artist }}" 
-                                                     class="w-full h-48 object-cover">
+                                                     class="w-full h-48 object-cover lyrics-fullscreen-img">
                                             </div>
                                         @endif
                                         <div class="p-4">

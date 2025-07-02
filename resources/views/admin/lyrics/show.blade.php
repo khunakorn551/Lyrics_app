@@ -29,7 +29,7 @@
                         <div class="w-full max-w-2xl mb-8">
                             <img src="{{ Storage::url($lyric->image_path) }}"
                                 alt="Lyrics for {{ $lyric->title }} by {{ $lyric->artist }}"
-                                class="w-full h-auto rounded-lg shadow-lg object-contain"
+                                class="w-full h-auto rounded-lg shadow-lg object-contain lyrics-fullscreen-img"
                                 style="max-height: 600px;">
                         </div>
                     @else
