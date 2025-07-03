@@ -70,12 +70,16 @@ class LyricsController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
+            'thumbnail' => 'required|image|max:5120', // Max 5MB
             'image' => 'required|image|max:5120', // Max 5MB
             'about' => 'nullable|string',
         ]);
 
         $validated['user_id'] = auth()->id();
 
+        if ($request->hasFile('thumbnail')) {
+            $validated['thumbnail_path'] = $request->file('thumbnail')->store('lyrics-thumbnails');
+        }
         if ($request->hasFile('image')) {
             $validated['image_path'] = $request->file('image')->store('lyrics-images');
         }
@@ -122,10 +126,17 @@ class LyricsController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
+            'thumbnail' => 'nullable|image|max:5120', // Max 5MB
             'image' => 'nullable|image|max:5120', // Max 5MB
             'about' => 'nullable|string',
         ]);
 
+        if ($request->hasFile('thumbnail')) {
+            if ($lyric->thumbnail_path) {
+                Storage::delete($lyric->thumbnail_path);
+            }
+            $validated['thumbnail_path'] = $request->file('thumbnail')->store('lyrics-thumbnails');
+        }
         if ($request->hasFile('image')) {
             if ($lyric->image_path) {
                 Storage::delete($lyric->image_path);

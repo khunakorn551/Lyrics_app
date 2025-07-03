@@ -25,6 +25,13 @@
                         </div>
 
                         <div>
+                            <x-input-label for="thumbnail" :value="__('Thumbnail Image (Required)')" />
+                            <input type="file" id="thumbnail" name="thumbnail" class="mt-1 block w-full" accept="image/*" required>
+                            <p class="mt-1 text-sm text-gray-500">Upload a thumbnail image for the lyrics (max 5MB, required)</p>
+                            <x-input-error class="mt-2" :messages="$errors->get('thumbnail')" />
+                        </div>
+
+                        <div>
                             <x-input-label for="image" :value="__('Lyrics Image')" />
                             <input type="file" id="image" name="image" class="mt-1 block w-full" accept="image/*" required>
                             <p class="mt-1 text-sm text-gray-500">Upload an image of the lyrics (max 5MB)</p>

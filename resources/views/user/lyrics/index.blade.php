@@ -36,10 +36,10 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             @foreach($lyrics as $lyric)
                                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                                    @if($lyric->image_path)
+                                    @if($lyric->thumbnail_path)
                                         <div class="aspect-w-16 aspect-h-9">
-                                            <img src="{{ Storage::url($lyric->image_path) }}" 
-                                                 alt="Lyrics for {{ $lyric->title }} by {{ $lyric->artist }}" 
+                                            <img src="{{ Storage::url($lyric->thumbnail_path) }}" 
+                                                 alt="Thumbnail for {{ $lyric->title }} by {{ $lyric->artist }}" 
                                                  class="w-full h-48 object-cover lyrics-fullscreen-img">
                                         </div>
                                     @endif

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('lyrics', function (Blueprint $table) {
             $table->text('about')->nullable()->after('image_path');
+            $table->string('thumbnail_path')->after('image_path');
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('lyrics', function (Blueprint $table) {
             $table->dropColumn('about');
+            $table->dropColumn('thumbnail_path');
         });
     }
 };

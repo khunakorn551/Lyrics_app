@@ -38,6 +38,18 @@
                         </div>
 
                         <div>
+                            <x-input-label for="thumbnail" :value="__('Thumbnail Image')" />
+                            @if($lyric->thumbnail_path)
+                                <div class="mb-2">
+                                    <img src="{{ Storage::url($lyric->thumbnail_path) }}" alt="Current thumbnail image" class="w-32 h-32 object-cover rounded">
+                                </div>
+                            @endif
+                            <input type="file" id="thumbnail" name="thumbnail" class="mt-1 block w-full" accept="image/*">
+                            <p class="mt-1 text-sm text-gray-500">Upload a new thumbnail image (max 5MB). Leave empty to keep the current thumbnail.</p>
+                            <x-input-error class="mt-2" :messages="$errors->get('thumbnail')" />
+                        </div>
+
+                        <div>
                             <x-input-label for="about" :value="__('About These Lyrics (optional)')" />
                             <textarea id="about" name="about" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" rows="5">{{ old('about', $lyric->about) }}</textarea>
                             <x-input-error class="mt-2" :messages="$errors->get('about')" />
