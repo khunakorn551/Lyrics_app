@@ -18,7 +18,13 @@
                         @forelse($bookmarks as $bookmark)
                             @if($bookmark->lyrics)
                                 <div class="border rounded p-2 flex flex-col items-center">
-                                    @if($bookmark->lyrics->image_path)
+                                    @if($bookmark->lyrics->thumbnail_path)
+                                        <div class="w-full aspect-w-16 aspect-h-9 mb-2">
+                                            <img src="{{ Storage::url($bookmark->lyrics->thumbnail_path) }}" 
+                                                 alt="{{ $bookmark->lyrics->title }} thumbnail" 
+                                                 class="w-full h-32 object-cover rounded" />
+                                        </div>
+                                    @elseif($bookmark->lyrics->image_path)
                                         <div class="w-full aspect-w-16 aspect-h-9 mb-2">
                                             <img src="{{ Storage::url($bookmark->lyrics->image_path) }}" 
                                                  alt="{{ $bookmark->lyrics->title }}" 
