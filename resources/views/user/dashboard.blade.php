@@ -38,7 +38,7 @@
                                 @foreach($bookmarkedLyrics as $bookmark)
                                     <div class="flex items-center space-x-3">
                                         @if($bookmark->lyrics->image_path)
-                                            <img src="{{ Storage::url($bookmark->lyrics->image_path) }}" alt="{{ $bookmark->lyrics->title }}" class="w-10 h-10 object-cover rounded" />
+                                            <img class="protected-img" src="{{ Storage::url($bookmark->lyrics->image_path) }}" alt="{{ $bookmark->lyrics->title }}" class="w-10 h-10 object-cover rounded" />
                                         @endif
                                         <div class="flex-1">
                                             <div class="font-semibold">{{ $bookmark->lyrics->title }}</div>
@@ -103,7 +103,7 @@
                         @foreach(\App\Models\Lyrics::latest()->take(8)->get() as $lyric)
                             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                                 @if($lyric->image_path)
-                                    <img src="{{ Storage::url($lyric->image_path) }}" alt="{{ $lyric->title }}" class="w-full h-40 object-cover">
+                                    <img class="protected-img" src="{{ Storage::url($lyric->image_path) }}" alt="{{ $lyric->title }}" class="w-full h-40 object-cover">
                                 @endif
                                 <div class="p-4">
                                     <h5 class="font-bold text-lg mb-2">{{ $lyric->title }}</h5>
