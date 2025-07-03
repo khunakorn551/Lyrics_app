@@ -37,7 +37,9 @@
                             <div class="space-y-2">
                                 @foreach($bookmarkedLyrics as $bookmark)
                                     <div class="flex items-center space-x-3">
-                                        @if($bookmark->lyrics->image_path)
+                                        @if($bookmark->lyrics->thumbnail_path)
+                                            <img src="{{ Storage::url($bookmark->lyrics->thumbnail_path) }}" alt="{{ $bookmark->lyrics->title }} thumbnail" class="w-10 h-10 object-cover rounded" />
+                                        @elseif($bookmark->lyrics->image_path)
                                             <img src="{{ Storage::url($bookmark->lyrics->image_path) }}" alt="{{ $bookmark->lyrics->title }}" class="w-10 h-10 object-cover rounded" />
                                         @endif
                                         <div class="flex-1">
