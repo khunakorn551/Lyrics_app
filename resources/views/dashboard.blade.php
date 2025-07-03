@@ -20,7 +20,7 @@
                                     @foreach($bookmarkedLyrics as $bookmark)
                                         <div class="flex items-center space-x-4">
                                             @if($bookmark->lyrics->image_path)
-                                                <img class="protected-img" src="{{ Storage::url($bookmark->lyrics->image_path) }}" 
+                                                <img class="protected-img w-16 h-16 object-cover rounded" src="{{ Storage::url($bookmark->lyrics->image_path) }}" 
                                                      alt="{{ $bookmark->lyrics->title }}" 
                                                      class="w-16 h-16 object-cover rounded">
                                             @endif

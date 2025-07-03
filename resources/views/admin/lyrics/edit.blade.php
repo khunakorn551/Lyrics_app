@@ -29,7 +29,7 @@
                             <x-input-label for="image" :value="__('Lyrics Image')" />
                             @if($lyric->image_path)
                                 <div class="mb-2">
-                                    <img class="protected-img" src="{{ Storage::url($lyric->image_path) }}" alt="Current lyrics image" class="w-32 h-32 object-cover rounded">
+                                    <img class="protected-img w-32 h-32 object-cover rounded" src="{{ Storage::url($lyric->image_path) }}" alt="Current lyrics image">
                                 </div>
                             @endif
                             <input type="file" id="image" name="image" class="mt-1 block w-full" accept="image/*">

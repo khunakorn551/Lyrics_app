@@ -27,7 +27,7 @@
                 <div class="p-6 flex flex-col items-center">
                     @if($lyric->image_path)
                         <div class="w-full max-w-2xl mb-8">
-                            <img class="protected-img" src="{{ Storage::url($lyric->image_path) }}"
+                            <img class="protected-img w-full h-64 object-cover rounded" src="{{ Storage::url($lyric->image_path) }}"
                                 alt="Lyrics for {{ $lyric->title }} by {{ $lyric->artist }}"
                                 class="w-full h-auto rounded-lg shadow-lg object-contain lyrics-fullscreen-img"
                                 style="max-height: 600px;">
