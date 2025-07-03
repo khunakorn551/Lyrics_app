@@ -24,4 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+
+    // Prevent right-click and dragging on all images (protects images from easy download)
+    document.querySelectorAll('img').forEach(function(img) {
+        // Disable right-click context menu
+        img.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        // Disable dragging
+        img.setAttribute('draggable', 'false');
+    });
 });
