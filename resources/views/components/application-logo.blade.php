@@ -1,1 +1,1 @@
-<img class="protected-img" src="{{ asset('images/my-logo.png') }}" alt="Logo" style="object-fit:contain;" {{ $attributes->merge(['class' => 'block w-10 h-10']) }} />
+<img src="{{ asset('images/my-logo.png') }}" alt="Logo" style="object-fit:contain;" {{ $attributes->merge(['class' => 'block w-10 h-10']) }} />
