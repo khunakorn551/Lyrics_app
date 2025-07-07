@@ -136,4 +136,11 @@
             </div>
         </div>
     </div>
-</x-app-layout> 
+</x-app-layout>
+
+<head>
+    <title>Karen Song Lyrics - Find and Share Karen Lyrics</title>
+    <meta name="description" content="Discover, search, and share Karen song lyrics. The best place for Karen music fans!">
+    <meta name="keywords" content="Karen, song, lyrics, Karen songs, Karen music, Karen lyrics">
+    <!-- ...existing head content... -->
+</head> 

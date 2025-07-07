@@ -1,3 +1,9 @@
+@section('title', 'Karen Song Lyrics | Lyrics App')
+@section('meta')
+    <meta name="description" content="Discover and explore Karen song lyrics. Find lyrics for your favorite Karen songs, artists, and more!" />
+    <meta name="keywords" content="Karen song lyrics, Karen songs, Karen music, Karen lyrics, ethnic music, lyrics app" />
+@endsection
+
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
