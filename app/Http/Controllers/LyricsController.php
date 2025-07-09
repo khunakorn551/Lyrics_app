@@ -31,10 +31,11 @@ class LyricsController extends Controller
 
         // Search functionality
         if ($request->filled('search')) {
-            $searchTerm = $request->search;
+            $searchTerm = trim(preg_replace('/\s+/', ' ', $request->search)); // Remove extra spaces
+            $searchTerm = strtolower($searchTerm);
             $query->where(function($q) use ($searchTerm) {
-                $q->where('title', 'like', "%{$searchTerm}%")
-                  ->orWhere('artist', 'like', "%{$searchTerm}%");
+                $q->whereRaw('LOWER(title) LIKE ?', ["%{$searchTerm}%"])
+                  ->orWhereRaw('LOWER(artist) LIKE ?', ["%{$searchTerm}%"]);
             });
         }
 
