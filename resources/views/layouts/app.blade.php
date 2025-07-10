@@ -14,6 +14,10 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4966100160182051"
+             crossorigin="anonymous"></script>
     </head>
     <body class="font-sans antialiased overflow-x-hidden">
         <div x-data="{ sidebarOpen: window.innerWidth >= 1024 }" class="min-h-screen bg-gray-100 flex flex-col overflow-x-hidden">
