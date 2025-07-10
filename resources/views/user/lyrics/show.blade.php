@@ -49,12 +49,6 @@
                         </div>
                     @endif
 
-                    <!-- AdSense Spot (Above Comments) -->
-                    <div class="w-full max-w-xl bg-gray-200 p-4 rounded-lg mb-8 text-center text-gray-600">
-                        <!-- Your AdSense Ad Code will go here -->
-                        <p>AdSense Ad Spot - Above Comments</p>
-                    </div>
-
                     <!-- Comments Section -->
                     <div class="w-full max-w-xl bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-xl font-semibold mb-6">Comments ({{ $lyric->comments->count() }})</h3>
