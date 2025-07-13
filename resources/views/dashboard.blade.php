@@ -100,7 +100,7 @@
                                     </svg>
                                 </div>
                                 <div class="ml-4">
-                                    <h4 class="text-sm font-medium text-gray-900">Browse Lyrics</h4>
+                                    <h4 class="text-sm font-medium text-gray-900">Browse Lyrics (ဃုတၢ်သးဝံၣ်)</h4>
                                     <p class="text-sm text-gray-500">Find your favorite songs</p>
                                 </div>
                             </a>
@@ -113,7 +113,7 @@
                                     </svg>
                                 </div>
                                 <div class="ml-4">
-                                    <h4 class="text-sm font-medium text-gray-900">Request a Song</h4>
+                                    <h4 class="text-sm font-medium text-gray-900">Request a Song (ဃ့ထီၣ်တၢ်သးဝံၣ်)</h4>
                                     <p class="text-sm text-gray-500">Can't find what you're looking for?</p>
                                 </div>
                             </a>
