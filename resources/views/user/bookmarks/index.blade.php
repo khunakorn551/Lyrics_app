@@ -8,10 +8,6 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 flex gap-4">
-                    <a href="{{ route('lyrics.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Upload New Lyrics</a>
-                    <a href="{{ route('lyrics.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Manage Lyrics</a>
-                </div>
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-semibold mb-4">Bookmarked Lyrics</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

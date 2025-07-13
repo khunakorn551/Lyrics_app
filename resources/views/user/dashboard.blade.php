@@ -13,11 +13,11 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                     <a href="{{ route('lyrics.index') }}" class="flex flex-col items-center bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold py-4 px-2 rounded-lg text-center transition duration-150 ease-in-out">
                         <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                        Browse Lyrics
+                        Browse Lyrics (ဃုတၢ်သးဝံၣ်)
                     </a>
                     <a href="{{ route('song-requests.create') }}" class="flex flex-col items-center bg-green-50 hover:bg-green-100 text-green-700 font-semibold py-4 px-2 rounded-lg text-center transition duration-150 ease-in-out">
                         <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
-                        Request a Song
+                        Request a Song (ဃ့ထီၣ်တၢ်သးဝံၣ်)
                     </a>
                     <a href="{{ route('profile.edit') }}" class="flex flex-col items-center bg-purple-50 hover:bg-purple-100 text-purple-700 font-semibold py-4 px-2 rounded-lg text-center transition duration-150 ease-in-out">
                         <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
