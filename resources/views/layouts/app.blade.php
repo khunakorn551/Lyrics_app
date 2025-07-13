@@ -25,7 +25,7 @@
 
             <div class="flex flex-1 overflow-x-hidden">
                 <!-- Sidebar -->
-                <div :class="sidebarOpen ? 'w-52' : 'w-0 -ml-52 lg:ml-0'" class="min-h-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out lg:w-52 lg:relative absolute z-40 border-r border-gray-200">
+                <div :class="sidebarOpen ? 'w-52 fixed-sidebar' : 'w-0 -ml-52 lg:ml-0'" class="min-h-full bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out lg:w-52 lg:relative absolute z-40 border-r border-gray-200">
                     <div class="p-4">
                         <h2 class="text-lg font-semibold text-gray-800 mb-4">
                             @if(auth()->check() && auth()->user()->isAdmin())
@@ -120,7 +120,7 @@
                     <!-- Page Heading -->
                     @include('layouts.header')
                     <!-- Page Content -->
-                    <main class="flex-1 py-6 px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto w-full overflow-x-hidden lg:px-0">
+                    <main class="flex-1 py-6 px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto w-full overflow-x-hidden lg:px-0 main-content-fixed">
                         {{ $slot }}
                     </main>
 
