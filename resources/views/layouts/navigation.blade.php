@@ -17,6 +17,10 @@
             </div>
             <!-- Auth buttons/user dropdown (desktop only) -->
             <div class="hidden lg:flex items-center space-x-4 ml-auto">
+                <a href="{{ route('about') }}" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">About</a>
+                <a href="{{ route('privacy') }}" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Privacy Policy</a>
+                <a href="{{ route('terms') }}" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Terms</a>
+                <a href="{{ route('contact') }}" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Contact</a>
                 @guest
                     <a href="{{ route('login') }}" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Login</a>
                     <a href="{{ route('register') }}" class="px-4 py-2 text-sm text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg">Register</a>
@@ -56,6 +60,18 @@
             </a>
             <a href="{{ route('lyrics.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg {{ request()->routeIs('lyrics.index') ? 'bg-gray-100' : '' }}">
                 Lyrics
+            </a>
+            <a href="{{ route('about') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg {{ request()->routeIs('about') ? 'bg-gray-100' : '' }}">
+                About
+            </a>
+            <a href="{{ route('privacy') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg {{ request()->routeIs('privacy') ? 'bg-gray-100' : '' }}">
+                Privacy Policy
+            </a>
+            <a href="{{ route('terms') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg {{ request()->routeIs('terms') ? 'bg-gray-100' : '' }}">
+                Terms
+            </a>
+            <a href="{{ route('contact') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg {{ request()->routeIs('contact') ? 'bg-gray-100' : '' }}">
+                Contact
             </a>
             @auth
                 @if(auth()->user()->isAdmin())
