@@ -25,6 +25,7 @@ Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact', [PageController::class, 'submitContact'])->name('contact.submit');
+Route::get('/about', [PageController::class, 'about'])->name('about');
 
 // Authenticated routes
 Route::middleware(['auth', 'verified'])->group(function () {
