@@ -9,11 +9,6 @@ php_value output_handler mb_output_handler
 
     RewriteEngine On
 
-    # Redirect to HTTPS and non-www
-    RewriteCond %{HTTPS} off [OR]
-    RewriteCond %{HTTP_HOST} ^www\. [NC]
-    RewriteRule ^ https://karensonglyrics.com%{REQUEST_URI} [L,R=301]
-
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
